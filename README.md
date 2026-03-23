@@ -1,0 +1,1 @@
+Dalam kehidupan sehari-hari
