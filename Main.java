@@ -4,19 +4,19 @@ class Pakaian {
     String warna;
     String nama;
     int countPemakaian;
-    String kondisi;
+    String status;
     int hitunganLaundry;
 
     public Pakaian(String warna, String nama) {
         this.warna = warna;
         this.nama = nama;
         this.countPemakaian = 0;
-        this.kondisi = "Bisa dipakai";
+        this.status = "Bisa dipakai";
         this.hitunganLaundry = 0;
     }
 
     public boolean ready() {
-        return kondisi.equals("Bisa dipakai");
+        return status.equals("Bisa dipakai");
     }
 
     public void pakai() {
@@ -26,10 +26,10 @@ class Pakaian {
     }
 
     public void hariEsok() {
-        if (kondisi.equals("Sedang laundry")) {
+        if (status.equals("Sedang laundry")) {
             hitunganLaundry--;
             if (hitunganLaundry <= 0) {
-                kondisi = "Bisa dipakai";
+                status = "Bisa dipakai";
                 System.out.println(nama + " sudah selesai laundry!");
             }
         }
@@ -43,8 +43,8 @@ class Pakaian {
     }
 
     public void info() {
-        String extra = kondisi.equals("Sedang laundry") ? " (" + hitunganLaundry + " hari)" : "";
-        System.out.println(warna + " " + nama + " (" + kategori() + ") | Status: " + kondisi + extra);
+        String extra = status.equals("Sedang laundry") ? " (" + hitunganLaundry + " hari)" : "";
+        System.out.println(warna + " " + nama + " (" + kategori() + ") | Status: " + status + extra);
     }
 }
 
@@ -56,7 +56,7 @@ class Baju extends Pakaian {
     @Override
     public void cekLaundry() {
         if (countPemakaian >= 3) {
-            kondisi = "Sedang laundry";
+            status = "Sedang laundry";
             hitunganLaundry = 3;
             countPemakaian = 0;
             System.out.println(nama + " masuk laundry (3 hari)");
@@ -77,7 +77,7 @@ class Celana extends Pakaian {
     @Override
     public void cekLaundry() {
         if (countPemakaian >= 6) {
-            kondisi = "Sedang laundry";
+            status = "Sedang laundry";
             hitunganLaundry = 3;
             countPemakaian = 0;
             System.out.println(nama + " masuk laundry (3 hari)");
